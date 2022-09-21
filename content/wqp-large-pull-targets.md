@@ -43,7 +43,7 @@ across USGS data teams. In this post, we highlight an [example data
 pipeline](https://github.com/USGS-R/ds-pipelines-targets-example-wqp/) to increase the reusability, reproducibility, and efficiency of
 WQP data workflows. 
 
-{{< figure src="/static/wqp-large-pull-targets/full_pipeline.png" width="375px" style="float:right; padding:10px" alt="A diagram that depicts a targets workflow. A targets workflow diagram tracks all portions of a data analysis workflow and their dependencies.">}}
+This blog post represents an alternative method to the script-based workflow presented in [Large sample pulls using dataRetrieval](https://waterdata.usgs.gov/blog/large_sample_pull/), and we've designed it with large-scale data pulls in mind.
 
 ## Why targets?
 
@@ -52,6 +52,8 @@ The workflow described here uses the [`targets`](https://books.ropensci.org/targ
 dependency tracking, and automated workflows to inventory and download
 data from the Water Quality Portal. Using `targets` allows the user to develop a maintainable pipeline that tracks changes over time and will only re-run portions of the workflow that are out of date due to those changes.
 
+{{< figure src="/static/wqp-large-pull-targets/full_pipeline.png" width="375px" style="float:right; padding:10px" class="side-by-side" alt="A diagram that depicts a targets workflow. A targets workflow diagram tracks all portions of a data analysis workflow and their dependencies.">}}
+
 The basic ingredient of a `targets` workflow is a target script file named `_targets.R`. The `_targets.R`
 file is used to define and configure all of the pipeline connections,
 which are represented as a network graph like the one shown on the
@@ -59,6 +61,7 @@ right. The WQP pipeline is structured so that various inputs - including
 the date range, spatial extent, parameters of interest, and/or specific
 arguments to pass along to WQP queries - can all be modified within the
 `_targets.R` file.
+
 
 ## Pulling data from the Water Quality Portal
 
