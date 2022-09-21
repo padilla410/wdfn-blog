@@ -4,7 +4,7 @@ date: 2022-09-22
 slug: wqp-large-pull-targets
 draft: true
 type: post
-image: /static/wqp-large-pull-targets/full_pipeline.png
+image: /static/wqp-large-pull-targets/map_original_grid_cells.png
 title: "Large Data Pulls from Water Quality Portal - A Pipeline-Based Approach"
 author_email: <lkoenig@usgs.gov>
 author_twitter: USGS_DataSci
@@ -43,10 +43,7 @@ across USGS data teams. In this post, we highlight an [example data
 pipeline](https://github.com/USGS-R/ds-pipelines-targets-example-wqp/) to increase the reusability, reproducibility, and efficiency of
 WQP data workflows. 
 
-# <img src="./full_pipeline.png" width="375px" style="float:right; padding:10px" />
-
 {{< figure src="/static/wqp-large-pull-targets/full_pipeline.png" width="375px" style="float:right; padding:10px" alt="A diagram that depicts a targets workflow. A targets workflow diagram tracks all portions of a data analysis workflow and their dependencies.">}}
-
 
 ## Why targets?
 
