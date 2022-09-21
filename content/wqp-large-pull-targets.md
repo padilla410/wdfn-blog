@@ -1,8 +1,8 @@
 ---
 author: Lauren Koenig (she/her), Lindsay Platt (she/her), Julie Padilla (she/her)
-date: 2022-09-22
+date: 2022-09-21
 slug: wqp-large-pull-targets
-draft: true
+draft: false
 type: post
 image: /static/wqp-large-pull-targets/map_original_grid_cells.png
 title: "Large Data Pulls from Water Quality Portal - A Pipeline-Based Approach"
@@ -104,7 +104,7 @@ characteristic names from the configuration file are checked against a
 list of valid entries in WQP, and will notify the user if a
 characteristic name is not valid.
 
-<img src="./pipeline_snap_char_names.png" width="850px" />
+{{< figure src="/static/wqp-large-pull-targets/pipeline_snap_char_names.png" width="850px" alt="A screenshot of the R console output for the example pipeline. The console output indicates that the wqp characteristic targets are building.">}}
 
 So we can see that our newly-added characteristic name “temp” is not a
 valid entry and can be omitted from the configuration file. Second,
@@ -185,7 +185,7 @@ size of each grid cell can be customized by the user, but using 1 degree
 cell sizes results in a set of five grid cells that overlap the our
 example watershed:
 
-<img src="./map_original_grid_cells.png" width="475px" />
+{{< figure src="/static/wqp-large-pull-targets/map_original_grid_cells.png" width="475px" alt="A map that includes the example watershed and grid cells that will be used to query WQP data.">}}
 
 ### Inventory the data before downloading
 
@@ -198,7 +198,7 @@ returned in the inventory by referencing a saved log file. If using the
 pipeline along with `git` for version control, this log file also allows
 a user to readily track changes to the data over the time.
 
-<img src="./log_file.png" width="300px" />
+{{< figure src="/static/wqp-large-pull-targets/log_file.png" width="300px" alt="A screenshot of the log file csv. The log file includes the following columns: characteristic name, number of sites, and number of records. The record depcited is for water temperature. It includes 504 sites and 8773 records.">}}
 
 ### Little by little: break up the inventoried sites to prepare for download
 
@@ -227,7 +227,7 @@ expected number of sites and records from `p1_similar_char_names_txt`
 against the number of sites and records that were actually downloaded,
 and inform the user of the result:
 
-<img src="./pipeline_snap_check_inventory.png" width="850px" />
+{{< figure src="/static/wqp-large-pull-targets/pipeline_snap_check_inventory.png" width="850px" alt="A screenshot of the R console output for the example pipeline that shows that the records downloaded match the records produced by the pipeline inventory. The output message reads: all good! the expected number of records from the WQP inventory matches the data pull for all characteristics.">}}
 
 ### Updating the data pull
 
@@ -240,13 +240,13 @@ grid cells instead of five, but the five original grids are still
 included in our query. Using common scripting workflows we would usually
 just re-pull all of the data again even though that is time-consuming.
 
-<img src="./map_updated_grid_cells.png" width="475px" />
+{{< figure src="/static/wqp-large-pull-targets/map_updated_grid_cells.png" width="475px" alt="Another map that includes the example watershed and a new set of grid cells that will be used to query WQP data.">}}
 
 However, `targets` recognizes that data has already been inventoried for
 five of these grid cells and will only query data for the newly-added
 grid, `46902`:
 
-<img src="./pipeline_snap_update_inventory.png" width="600px" />
+{{< figure src="/static/wqp-large-pull-targets/pipeline_snap_update_inventory.png" width="600px" alt="A screenshot of the R console output for the example pipeline that shows a partial rebuild of the data pipeline.">}}
 
 ## Customizing the pipeline
 
